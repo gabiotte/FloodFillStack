@@ -1,0 +1,48 @@
+public class Main {
+    public static void main(String[] args) {
+        // Criação de uma pilha com capacidade para 5 coordenadas
+        StaticStack stack = new StaticStack(5);
+
+        // Adicionando coordenadas na pilha
+        System.out.println("Adicionando coordenadas na pilha");
+        stack.push(new Coordenada(1, 2));
+        stack.push(new Coordenada(3, 4));
+        stack.push(new Coordenada(5, 6));
+        stack.push(new Coordenada(7, 8));
+        stack.push(new Coordenada(9, 10));
+
+        // Tentando adicionar mais uma coordenada (deve causar erro StackOverflowError)
+        try {
+            stack.push(new Coordenada(11, 12));
+        } catch (StackOverflowError e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        // Removendo duas coordenadas da pilha
+        System.out.println("\nRemovendo coordenadas da pilha:");
+        System.out.println("Removido: " + stack.pop());
+        System.out.println("Removido: " + stack.pop());
+
+        // Verificando se a pilha está cheia ou vazia
+        System.out.println("\nPilha está cheia? " + stack.isFull());
+        System.out.println("Pilha está vazia? " + stack.isEmpty());
+
+        // Limpando a pilha
+        System.out.println("\nLimpando a pilha...");
+        stack.clear();
+
+        // Verificando novamente se a pilha está cheia ou vazia após limpar
+        System.out.println("Pilha está cheia? " + stack.isFull());
+        System.out.println("Pilha está vazia? " + stack.isEmpty());
+
+        // Adicionando coordenadas novamente após limpar
+        System.out.println("\nAdicionando coordenadas na pilha após limpar");
+        stack.push(new Coordenada(13, 14));
+        stack.push(new Coordenada(15, 16));
+
+        // Removendo uma coordenada e verificando o estado da pilha
+        System.out.println("Removido: " + stack.pop());
+        System.out.println("Pilha está cheia? " + stack.isFull());
+        System.out.println("Pilha está vazia? " + stack.isEmpty());
+    }
+}
